@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <View className="flex-1 bg-gray-50">
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }} className="flex-1 px-6 pt-14">
+      <ScrollView contentContainerStyle={{ paddingBottom: 80 }} className="flex-1 px-4 pt-14">
         {/* Top Header: Search & Profile */}
         <View className="mb-8 flex flex-row items-center justify-between">
           {/* <View className="mr-4 flex-1 flex-row items-center rounded-2xl bg-white px-4 py-3 shadow-sm">
@@ -52,6 +52,54 @@ export default function Home() {
           <Text className="text-center text-gray-500">Ready to continue your journey?</Text>
         </View>
 
+        {/* Streak Bar */}
+        <View className="mx-0 mb-8 flex-row items-center justify-between rounded-3xl bg-white p-5 shadow-sm">
+          <View className="flex-1">
+            <Text className="mb-3 text-[10px] font-bold tracking-wider text-gray-400">
+              WEEKLY GOAL
+            </Text>
+            <View className="flex-row justify-between pr-4">
+              {/* Completed Days */}
+              {['M', 'T', 'W', 'T'].map((day, index) => (
+                <View key={index} className="items-center gap-1">
+                  <View className="h-8 w-8 items-center justify-center rounded-full bg-orange-500">
+                    <MaterialCommunityIcons name="fire" size={16} color="white" />
+                  </View>
+                  <Text className="text-[10px] font-bold text-gray-600">{day}</Text>
+                </View>
+              ))}
+
+              {/* Current Day */}
+              <View className="items-center gap-1">
+                <View className="h-8 w-8 items-center justify-center rounded-full border-2 border-orange-500 bg-white">
+                  <MaterialCommunityIcons name="fire" size={16} color="#F97316" />
+                </View>
+                <Text className="text-[10px] font-bold text-gray-800">F</Text>
+              </View>
+
+              {/* Future Days */}
+              {['S', 'S'].map((day, index) => (
+                <View key={index} className="items-center gap-1">
+                  <View className="h-8 w-8 items-center justify-center rounded-full border border-dashed border-gray-300 bg-gray-50">
+                    <Text className="text-[10px] text-gray-400">{day}</Text>
+                  </View>
+                  <Text className="text-[10px] font-bold text-gray-400">{day}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* Streak Text */}
+          <View className="items-end pl-2">
+            <View className="flex-row items-center">
+              <Text className="text-xl font-extrabold text-gray-900">5 Day</Text>
+              <MaterialCommunityIcons name="fire" size={20} color="#F97316" className="ml-1" />
+            </View>
+            <Text className="-mt-1 text-xl font-extrabold text-gray-900">Streak</Text>
+            <Text className="mt-1 text-xs font-medium text-gray-400">Keep it going</Text>
+          </View>
+        </View>
+
         {/* Action Cards */}
         <View className="mb-8 gap-4">
           {/* Learning Card */}
@@ -71,7 +119,9 @@ export default function Home() {
           </TouchableOpacity>
 
           {/* Test Card */}
-          <TouchableOpacity className="flex-row items-center rounded-3xl bg-white p-5 shadow-sm">
+          <TouchableOpacity
+            className="flex-row items-center rounded-3xl bg-white p-5 shadow-sm"
+            onPress={() => navigation.navigate('TestContent')}>
             <View className="h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50">
               <MaterialCommunityIcons name="clipboard-check" size={28} color="#10B981" />
             </View>
@@ -87,8 +137,8 @@ export default function Home() {
 
         {/* Daily Progress */}
         <View className="mb-4">
-          <View className="mb-4 flex-row items-center justify-between">
-            <Text className="text-lg font-bold text-gray-800">Daily Progress</Text>
+          <View className="mb-4 flex-row items-center justify-between ">
+            <Text className="px-3 text-lg font-bold text-gray-800 ">Daily Progress</Text>
             <TouchableOpacity>
               <Text className="text-xs font-bold text-indigo-500">VIEW ALL</Text>
             </TouchableOpacity>

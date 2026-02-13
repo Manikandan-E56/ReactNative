@@ -10,7 +10,13 @@ import SignUp from './Auth/SignUp';
 import Home from './Pages/Home';
 import Content from './Pages/Learning/Content';
 import Discover from './Pages/Learning/Discover';
+import TestContent from './Pages/Test/TestContent';
+import Level from './Pages/Test/Level';
 import TabNavigator from './Pages/TabNavigator';
+import Profile from './Pages/Profile';
+import Sections from './Pages/Test/Sections';
+import Questions from './Pages/Test/Questions';
+import Score from './Pages/Test/Score';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +32,12 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Content" component={Content} />
           <Stack.Screen name="Discover" component={Discover} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="TestContent" component={TestContent} />
+          <Stack.Screen name="Level" component={Level} />
+          <Stack.Screen name="Sections" component={Sections} />
+          <Stack.Screen name="Questions" component={Questions} />
+          <Stack.Screen name="Score" component={Score} />
 
           <Stack.Screen name="Tabs" component={TabNavigator} />
         </Stack.Navigator>

@@ -1,61 +1,74 @@
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Ionicons from '@expo/vector-icons/Ionicons';
-
 const Reasoning = [
   {
     id: 1,
     name: 'Number Series',
-    logo: <MaterialIcons name="format-list-numbered" size={24} color="blue" />,
+    icon: 'format-list-numbered',
+    lib: 'MaterialIcons',
+    color: 'blue',
     bgClass: 'bg-blue-100',
   },
   {
     id: 2,
     name: 'Analogy',
-    logo: <MaterialIcons name="compare-arrows" size={24} color="purple" />,
+    icon: 'compare-arrows',
+    lib: 'MaterialIcons',
+    color: 'purple',
     bgClass: 'bg-purple-100',
   },
   {
     id: 3,
     name: 'Letter And Symbol Series',
-    logo: <MaterialIcons name="text-fields" size={24} color="green" />,
+    icon: 'text-fields',
+    lib: 'MaterialIcons',
+    color: 'green',
     bgClass: 'bg-green-100',
   },
   {
     id: 4,
     name: 'Coding And Decoding',
-    logo: <FontAwesome name="code" size={24} color="black" />,
+    icon: 'code',
+    lib: 'FontAwesome',
+    color: 'black',
     bgClass: 'bg-blue-100',
   },
   {
     id: 5,
     name: 'Cause And Effect',
-    logo: <MaterialCommunityIcons name="leaf" size={24} color="orange" />,
+    icon: 'leaf',
+    lib: 'MaterialCommunityIcons',
+    color: 'orange',
     bgClass: 'bg-orange-100',
   },
   {
     id: 6,
     name: 'Direction Sense',
-    logo: <MaterialCommunityIcons name="directions-fork" size={24} color="red" />,
+    icon: 'directions-fork',
+    lib: 'MaterialCommunityIcons',
+    color: 'red',
     bgClass: 'bg-red-100',
   },
   {
     id: 7,
     name: 'Blood Relation',
-    logo: <MaterialCommunityIcons name="family-tree" size={24} color="pink" />,
+    icon: 'family-tree',
+    lib: 'MaterialCommunityIcons',
+    color: 'pink',
     bgClass: 'bg-pink-100',
   },
   {
     id: 8,
     name: 'Puzzle',
-    logo: <Ionicons name="extension-puzzle-outline" size={24} color="blue" />,
+    icon: 'extension-puzzle-outline',
+    lib: 'Ionicons',
+    color: 'blue',
     bgClass: 'bg-blue-100',
   },
   {
     id: 9,
     name: 'Syllogism',
-    logo: <MaterialCommunityIcons name="alphabetical" size={24} color="black" />,
+    icon: 'alphabetical',
+    lib: 'MaterialCommunityIcons',
+    color: 'black',
     bgClass: 'bg-blue-100',
   },
 ];

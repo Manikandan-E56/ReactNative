@@ -1,12 +1,40 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
+import {
+  Ionicons,
+  MaterialIcons,
+  MaterialCommunityIcons,
+  Foundation,
+  AntDesign,
+  FontAwesome,
+  Octicons,
+} from '@expo/vector-icons';
 import NavBar from '../../components/NavBar';
-import BackButton from '../../components/BackButton';
+
+
+const getIcon = (lib, icon, color, size = 24) => {
+  switch (lib) {
+    case 'Ionicons':
+      return <Ionicons name={icon} size={size} color={color} />;
+    case 'MaterialIcons':
+      return <MaterialIcons name={icon} size={size} color={color} />;
+    case 'MaterialCommunityIcons':
+      return <MaterialCommunityIcons name={icon} size={size} color={color} />;
+    case 'Foundation':
+      return <Foundation name={icon} size={size} color={color} />;
+    case 'AntDesign':
+      return <AntDesign name={icon} size={size} color={color} />;
+    case 'FontAwesome':
+      return <FontAwesome name={icon} size={size} color={color} />;
+    case 'Octicons':
+      return <Octicons name={icon} size={size} color={color} />;
+    default:
+      return <MaterialIcons name="error" size={size} color={color} />;
+  }
+};
 
 export default function Discover({ route, navigation }) {
-
   const { title, description, data } = route.params || {};
 
   const topicData = data || [];
@@ -34,7 +62,7 @@ export default function Discover({ route, navigation }) {
               >
                 <View
                   className={`h-12 w-12 items-center justify-center rounded-full ${item.bgClass || 'bg-gray-100'}`}>
-                  {item.logo}
+                  {getIcon(item.lib, item.icon, item.color)}
                 </View>
 
                 <View className="ml-4 flex-1">
