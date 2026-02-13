@@ -17,31 +17,34 @@ import Profile from './Pages/Profile';
 import Sections from './Pages/Test/Sections';
 import Questions from './Pages/Test/Questions';
 import Score from './Pages/Test/Score';
+import { AppContextProvider } from './Context/Context';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle="dark-content" backgroundColor="#f3f4f6" />
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="Login" component={Login} />
+    <AppContextProvider>
+      <SafeAreaProvider>
+        <StatusBar barStyle="dark-content" backgroundColor="#f3f4f6" />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="Login" component={Login} />
 
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Content" component={Content} />
-          <Stack.Screen name="Discover" component={Discover} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="TestContent" component={TestContent} />
-          <Stack.Screen name="Level" component={Level} />
-          <Stack.Screen name="Sections" component={Sections} />
-          <Stack.Screen name="Questions" component={Questions} />
-          <Stack.Screen name="Score" component={Score} />
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Content" component={Content} />
+            <Stack.Screen name="Discover" component={Discover} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="TestContent" component={TestContent} />
+            <Stack.Screen name="Level" component={Level} />
+            <Stack.Screen name="Sections" component={Sections} />
+            <Stack.Screen name="Questions" component={Questions} />
+            <Stack.Screen name="Score" component={Score} />
 
-          <Stack.Screen name="Tabs" component={TabNavigator} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+            <Stack.Screen name="Tabs" component={TabNavigator} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </AppContextProvider>
   );
 }

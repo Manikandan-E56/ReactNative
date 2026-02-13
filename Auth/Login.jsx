@@ -5,17 +5,27 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
+import {useContext} from 'react';
+import { AppContext } from '../Context/Context';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const {login} = useContext(AppContext);
   const navigation = useNavigation();
 
   const handleLogin = () => {
     console.log('Email:', email);
     console.log('Password:', password);
+   const res= login(email,password);
+   if(res){
     navigation.navigate('Tabs');
+   }
+   else{
+    alert('Invalid credentials');
+   }
   };
 
   return (

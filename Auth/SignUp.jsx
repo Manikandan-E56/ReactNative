@@ -12,18 +12,40 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import {useContext} from 'react';
+import { AppContext } from '../Context/Context';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const {register} = useContext(AppContext);
 
   const navigation = useNavigation();
 
   const handleSignup = () => {
-    navigation.navigate('Tabs');
+    if(!email || !password || !name || !phone ){
+      alert('Please fill all the fields');
+      return;
+    }
+    if(password.length < 8){
+      alert('Password must be at least 8 characters long');
+      return;
+    }
+    console.log(name,email,password,phone);
+  try{
+    const res= register(name,email,password,phone);
+    console.log(res);
+    if(res){
+      navigation.navigate('Tabs');
+    }else{
+      console.log(res);
+    }
+  }catch(error){
+    console.log(error);
+  }
   };
 
   return (
@@ -60,8 +82,8 @@ export default function SignUp() {
               <View className="flex-row items-center rounded-xl border border-gray-100 bg-gray-50 px-2 py-2 focus:border-blue-500">
                 <Ionicons name="person-outline" size={20} color="#9CA3AF" />
                 <TextInput
-                  value={username}
-                  onChangeText={setUsername}
+                  value={name}
+                  onChangeText={setName}
                   className="ml-3 flex-1 text-xl text-gray-700"
                   placeholder="John Doe"
                   placeholderTextColor="#9CA3AF"
