@@ -8,6 +8,10 @@ export const AppContextProvider = ({ children }) => {
   const [points, setPoints] = useState(100);
   const [loading, setLoading] = useState(true); // ✅ Add loading state
 
+  const [image, setImage] = useState(null);
+
+
+
   async function login(email, password) {
     try {
       try {
@@ -69,7 +73,6 @@ export const AppContextProvider = ({ children }) => {
     init();
   }, []);
 
-
   async function logout() {
     try {
       await account.deleteSession('current');
@@ -79,7 +82,7 @@ export const AppContextProvider = ({ children }) => {
     }
   }
 
-  const value = { User, setUser, points, setPoints, login, register, logout, loading };
+  const value = { User, setUser, points, setPoints, login, register, logout, image, setImage, loading };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

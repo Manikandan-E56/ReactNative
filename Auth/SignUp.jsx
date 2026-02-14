@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { AppContext } from '../Context/Context';
 
 export default function SignUp() {
@@ -21,31 +21,29 @@ export default function SignUp() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const {register} = useContext(AppContext);
+  const { register } = useContext(AppContext);
 
   const navigation = useNavigation();
 
   const handleSignup = () => {
-    if(!email || !password || !name || !phone ){
+    if (!email || !password || !name || !phone) {
       alert('Please fill all the fields');
       return;
     }
-    if(password.length < 8){
+    if (password.length < 8) {
       alert('Password must be at least 8 characters long');
       return;
     }
-    console.log(name,email,password,phone);
-  try{
-    const res= register(name,email,password,phone);
-    console.log(res);
-    if(res){
-      navigation.navigate('Tabs');
-    }else{
+    console.log(name, email, password, phone);
+    try {
+      const res = register(name, email, password, phone);
       console.log(res);
+      if (!res) {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  }catch(error){
-    console.log(error);
-  }
   };
 
   return (

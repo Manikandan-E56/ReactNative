@@ -9,7 +9,7 @@ const QuestionCard = ({ question, index, total, selectedAnswer, onSelectAnswer }
     <View className="mb-6 rounded-3xl border border-gray-100 bg-white p-6 shadow-sm">
       <View className="mb-4 flex-row items-center">
         <View className="rounded-lg bg-blue-50 px-3 py-1">
-          <Text className="text-xs font-bold text-blue-600">
+          <Text className="text-xl font-bold text-blue-600">
             QUESTION {String(index + 1).padStart(2, '0')}
           </Text>
         </View>
@@ -40,12 +40,12 @@ const QuestionCard = ({ question, index, total, selectedAnswer, onSelectAnswer }
                     ? 'border-blue-500 bg-blue-500'
                     : 'border-gray-100 bg-gray-50'
                 }`}>
-                <Text className={`font-bold ${isSelected ? 'text-white' : 'text-gray-700'}`}>
+                <Text className={`font-bold text-xl ${isSelected ? 'text-white' : 'text-gray-700'}`}>
                   {optionLabel}
                 </Text>
               </View>
               <Text
-                className={`flex-1 text-base font-medium ${
+                className={`flex-1 text-xl font-medium ${
                   isSelected ? 'text-blue-700' : 'text-gray-700'
                 }`}>
                 {option}
@@ -124,8 +124,8 @@ export default function Questions({ route }) {
       <Text className="mb-2 text-4xl font-extrabold text-slate-900">{title}</Text>
 
       <View className="mb-2 flex-row items-center justify-between">
-        <Text className="text-sm font-bold tracking-wider text-gray-500">PROGRESS</Text>
-        <Text className="text-sm font-bold text-blue-500">
+        <Text className="text-lg font-bold tracking-wider text-gray-500">PROGRESS</Text>
+        <Text className="text-lg font-bold text-blue-500">
           {answeredCount}/{questions?.length || 0}
         </Text>
       </View>

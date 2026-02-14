@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -11,6 +12,8 @@ import {
   Octicons,
 } from '@expo/vector-icons';
 import NavBar from '../../components/NavBar';
+import AptitudeStudyMaterial from '../../Data/AptitudeStudy';
+
 
 
 const getIcon = (lib, icon, color, size = 24) => {
@@ -36,7 +39,8 @@ const getIcon = (lib, icon, color, size = 24) => {
 
 export default function Discover({ route, navigation }) {
   const { title, description, data } = route.params || {};
-
+  const navigate = useNavigation();
+  
   const topicData = data || [];
   const pageTitle = title || 'Discover';
   const pageDescription = description || 'Explore Topics';
@@ -58,7 +62,7 @@ export default function Discover({ route, navigation }) {
               <TouchableOpacity
                 key={item.id}
                 className={`flex-row items-center rounded-2xl border border-gray-100 bg-white p-4 shadow-sm active:opacity-70`}
-                onPress={() => console.log(`Pressed ${item.name}`)} // Placeholder for topic navigation
+                onPress={() => navigate.navigate('Learning', { title: item.name, data: AptitudeStudyMaterial.find(x => x.id === item.id) })} // Placeholder for topic navigation
               >
                 <View
                   className={`h-12 w-12 items-center justify-center rounded-full ${item.bgClass || 'bg-gray-100'}`}>

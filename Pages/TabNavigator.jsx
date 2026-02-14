@@ -6,6 +6,7 @@ import Home from './Home';
 import Profile from './Profile';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {

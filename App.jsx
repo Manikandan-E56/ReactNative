@@ -4,6 +4,9 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { View, ActivityIndicator } from 'react-native';
+import { useContext } from 'react';
+
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
 
@@ -17,20 +20,29 @@ import Profile from './Pages/Profile';
 import Sections from './Pages/Test/Sections';
 import Questions from './Pages/Test/Questions';
 import Score from './Pages/Test/Score';
-import { AppContextProvider } from './Context/Context';
+import Learning from './Pages/Learning/Learning';
+import { AppContextProvider, AppContext } from './Context/Context';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
-  return (
-    <AppContextProvider>
-      <SafeAreaProvider>
-        <StatusBar barStyle="dark-content" backgroundColor="#f3f4f6" />
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="Login" component={Login} />
+function AppNavigator() {
+  const { User, loading } = useContext(AppContext);
 
+  if (loading) {
+    return (
+      <View className="flex-1 items-center justify-center bg-gray-50">
+        <ActivityIndicator size="large" color="#4f46e5" />
+      </View>
+    );
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {User ? (
+          // Authenticated Stack
+          <>
+            <Stack.Screen name="Tabs" component={TabNavigator} />
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Content" component={Content} />
             <Stack.Screen name="Discover" component={Discover} />
@@ -40,10 +52,26 @@ export default function App() {
             <Stack.Screen name="Sections" component={Sections} />
             <Stack.Screen name="Questions" component={Questions} />
             <Stack.Screen name="Score" component={Score} />
+            <Stack.Screen name="Learning" component={Learning} />
+          </>
+        ) : (
+          // Guest Stack
+          <>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
-            <Stack.Screen name="Tabs" component={TabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
+export default function App() {
+  return (
+    <AppContextProvider>
+      <SafeAreaProvider>
+        <StatusBar barStyle="dark-content" backgroundColor="#f3f4f6" />
+        <AppNavigator />
       </SafeAreaProvider>
     </AppContextProvider>
   );

@@ -1,14 +1,31 @@
-import React,{useContext} from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
 import { AppContext } from '../Context/Context';
 
 export default function Profile() {
   const navigation = useNavigation();
-  const { User, logout } = useContext(AppContext);
+  const { User, logout,image,setImage } = useContext(AppContext);
+  
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView contentContainerStyle={{ paddingBottom: 80 }} className="flex-1">
@@ -17,13 +34,17 @@ export default function Profile() {
           entering={FadeInUp.delay(100).duration(600).springify()}
           className="items-center justify-center pb-6 pt-8">
           <View className="relative">
-            <View className="h-28 w-28 rounded-full border-4 border-indigo-50 p-1">
-              <Image
-                source={{ uri: 'https://i.pravatar.cc/300?img=11' }}
-                className="h-full w-full rounded-full"
-              />
-            </View>
-            <View className="absolute bottom-2 right-1 h-5 w-5 rounded-full border-2 border-white bg-emerald-500" />
+            <TouchableOpacity onPress={pickImage}>
+              <View className="h-28 w-28 rounded-full border-4 border-indigo-50 p-1">
+                <Image
+                  source={{ uri: image || 'https://i.pravatar.cc/300?img=11' }}
+                  className="h-full w-full rounded-full"
+                />
+              </View>
+              <View className="absolute bottom-2 right-1 h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-indigo-500">
+                <Ionicons name="camera" size={16} color="white" />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <Text className="mt-4 text-2xl font-bold text-slate-900">{User?.name || 'Guest'}</Text>
@@ -70,10 +91,6 @@ export default function Profile() {
             className="flex-row items-center justify-center rounded-2xl border border-red-400 py-4 active:bg-red-100"
             onPress={() => {
               logout();
-              navigation.reset({
-                index: 0,
-                routes: [{ name: 'Login' }],
-              });
             }}>
             <Ionicons name="log-out-outline" size={20} color="#EF4444" />
             <Text className="ml-2 font-bold text-red-500">Log Out</Text>
