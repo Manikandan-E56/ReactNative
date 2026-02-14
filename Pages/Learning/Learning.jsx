@@ -2,6 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
+import NavBar from 'components/NavBar'
 
 export default function Learning({ route }) {
   const { title, data } = route.params || {};
@@ -384,6 +385,12 @@ export default function Learning({ route }) {
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
       {/* Header */}
+      <View className="flex-1 pt-4">
+        <View className="px-5 ">
+        <NavBar/>
+        </View>
+        
+      
       <View className="bg-indigo-600 px-5 pt-4 pb-6 shadow-lg">
         <Text className="text-white text-3xl font-bold mb-2">
           {title || data.topic || 'Learning'}
@@ -440,6 +447,7 @@ export default function Learning({ route }) {
 
         <View className="h-8" />
       </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }

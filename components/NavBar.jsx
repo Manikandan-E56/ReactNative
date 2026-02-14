@@ -13,7 +13,7 @@ export default function NavBar() {
   const points = 100;
 
   return (
-    <View className="mb-8 flex flex-row items-center justify-between">
+    <View className="mb-4 flex flex-row items-center justify-between">
       <TouchableOpacity activeOpacity={0.8}>
         <View className="flex-row items-center justify-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 shadow-sm">
           <MaterialCommunityIcons name="fire-circle" size={22} color="orange" />

@@ -7981,8 +7981,8 @@ const AptitudeStudyMaterial = [
     ]
   }
 }
-
-  
 ];
-
+const ReasoningStudyMaterial = [
+  
+]
 export default AptitudeStudyMaterial;

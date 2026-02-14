@@ -3,28 +3,24 @@
     "name": "AptitudeX",
     "slug": "AptitudeX",
     "version": "1.0.0",
-
     "web": {
       "favicon": "./assets/icon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
     "plugins": [],
-
     "orientation": "default",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ddon.reactnative"
@@ -35,6 +31,11 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.ddon.reactnative"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "21ee28ac-f0ee-4cdd-bfcf-0995123848ab"
+      }
     }
   }
 }
