@@ -20,7 +20,8 @@ import Profile from './Pages/Profile';
 import Sections from './Pages/Test/Sections';
 import Questions from './Pages/Test/Questions';
 import Score from './Pages/Test/Score';
-import Learning from './Pages/Learning/Learning';
+import QuantsLearning from './Pages/Learning/QuantsLearning';
+import Reasoning from './Pages/Learning/Reasoning';
 import { AppContextProvider, AppContext } from './Context/Context';
 
 const Stack = createNativeStackNavigator();
@@ -52,7 +53,8 @@ function AppNavigator() {
             <Stack.Screen name="Sections" component={Sections} />
             <Stack.Screen name="Questions" component={Questions} />
             <Stack.Screen name="Score" component={Score} />
-            <Stack.Screen name="Learning" component={Learning} />
+            <Stack.Screen name="QuantsLearning" component={QuantsLearning} />
+            <Stack.Screen name="Reasoning" component={Reasoning} />
           </>
         ) : (
           // Guest Stack

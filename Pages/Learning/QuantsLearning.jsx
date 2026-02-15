@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import NavBar from 'components/NavBar'
 
-export default function Learning({ route }) {
+export default function QuantsLearning({ route }) {
   const { title, data } = route.params || {};
   const [expandedSections, setExpandedSections] = useState({});
 

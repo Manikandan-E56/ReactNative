@@ -12,7 +12,7 @@ import {
   Octicons,
 } from '@expo/vector-icons';
 import NavBar from '../../components/NavBar';
-import AptitudeStudyMaterial from '../../Data/AptitudeStudy';
+
 
 
 
@@ -38,11 +38,13 @@ const getIcon = (lib, icon, color, size = 24) => {
 };
 
 export default function Discover({ route, navigation }) {
-  const { title, description, data } = route.params || {};
+  const { title, description, data,Material,screen } = route.params || {};
   const navigate = useNavigation();
   
   const topicData = data || [];
+  const MaterialData = Material || [];
   const pageTitle = title || 'Discover';
+  const pageScreen = screen || 'QuantsLearning';
   const pageDescription = description || 'Explore Topics';
 
   return (
@@ -62,7 +64,7 @@ export default function Discover({ route, navigation }) {
               <TouchableOpacity
                 key={item.id}
                 className={`flex-row items-center rounded-2xl border border-gray-100 bg-white p-4 shadow-sm active:opacity-70`}
-                onPress={() => navigate.navigate('Learning', { title: item.name, data: AptitudeStudyMaterial.find(x => x.id === item.id) })} // Placeholder for topic navigation
+                onPress={() => navigate.navigate(pageScreen, { title: item.name, data: MaterialData.find(x => x.id === item.id) })} // Placeholder for topic navigation
               >
                 <View
                   className={`h-12 w-12 items-center justify-center rounded-full ${item.bgClass || 'bg-gray-100'}`}>

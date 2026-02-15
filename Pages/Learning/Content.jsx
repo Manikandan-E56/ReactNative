@@ -9,6 +9,7 @@ import Aptitude from '../../Data/Aptitude';
 import Reasoning from '../../Data/Reasoning';
 import Grammar from '../../Data/Verbal';
 import NavBar from 'components/NavBar';
+import {ReasoningStudyMaterial,AptitudeStudyMaterial} from '../../Data/AptitudeStudy';
 
 const subjects = [
   {
@@ -23,6 +24,8 @@ const subjects = [
     progress: 0.2,
     progressColor: 'bg-blue-500',
     data: Aptitude,
+    Material:AptitudeStudyMaterial,
+    screen:"QuantsLearning",
   },
   {
     id: 2,
@@ -36,6 +39,8 @@ const subjects = [
     progress: 0.4,
     progressColor: 'bg-orange-500',
     data: Reasoning,
+    Material:ReasoningStudyMaterial,
+    screen:"Reasoning",
   },
   {
     id: 3,
@@ -105,6 +110,8 @@ export default function Content() {
                   title: card.title,
                   description: card.subtitle,
                   data: card.data,
+                  Material:card.Material,
+                  screen:card.screen,
                 })
               }>
               {/* Icon */}
