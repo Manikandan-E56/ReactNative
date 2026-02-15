@@ -9606,4 +9606,8 @@ const ReasoningStudyMaterial = [
 },
 ];
 
-export { ReasoningStudyMaterial, AptitudeStudyMaterial };
+const VerbalStudyMaterial = [
+  
+];
+
+export { ReasoningStudyMaterial, AptitudeStudyMaterial, VerbalStudyMaterial };
